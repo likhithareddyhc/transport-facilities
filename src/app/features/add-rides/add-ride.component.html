@@ -1,0 +1,63 @@
+<h2 class="page-title">Add a New Ride</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>
+    Employee ID
+    <input formControlName="employeeId" placeholder="Enter your Employee ID"/>
+    <div class="error" *ngIf="form.get('employeeId')?.touched && form.get('employeeId')?.invalid">
+      Employee ID is required
+    </div>
+  </label>
+
+  <label>
+    Vehicle Type
+    <select formControlName="vehicleType">
+      <option value="Car">Car</option>
+      <option value="Bike">Bike</option>
+    </select>
+  </label>
+
+  <label>
+    Vehicle No
+    <input formControlName="vehicleNo" placeholder="Enter Vehicle Number"/>
+    <div class="error" *ngIf="form.get('vehicleNo')?.touched && form.get('vehicleNo')?.invalid">
+      Vehicle Number is required
+    </div>
+  </label>
+
+  <label>
+    Vacant Seats
+    <input type="number" formControlName="vacantSeats" min="1"/>
+    <div class="error" *ngIf="form.get('vacantSeats')?.touched && form.get('vacantSeats')?.invalid">
+      Vacant Seats must be at least 1
+    </div>
+  </label>
+
+  <label>
+    Time
+    <input type="time" formControlName="time"/>
+    <div class="error" *ngIf="form.get('time')?.touched && form.get('time')?.invalid">
+      Time is required
+    </div>
+  </label>
+
+  <label>
+    Pickup Point
+    <input formControlName="pickupPoint" placeholder="Enter Pickup Point"/>
+    <div class="error" *ngIf="form.get('pickupPoint')?.touched && form.get('pickupPoint')?.invalid">
+      Pickup Point is required
+    </div>
+  </label>
+
+  <label>
+    Destination
+    <input formControlName="destination" placeholder="Enter Destination"/>
+    <div class="error" *ngIf="form.get('destination')?.touched && form.get('destination')?.invalid">
+      Destination is required
+    </div>
+  </label>
+
+  <button type="submit">Add Ride</button>
+
+  <div *ngIf="message" class="message">{{ message }}</div>
+</form>

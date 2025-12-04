@@ -1,0 +1,57 @@
+<div class="list-container">
+
+  <div class="filter-bar">
+    <label>
+      Vehicle
+      <select [(ngModel)]="filterVehicle" (change)="applyFilter()">
+        <option value="">All</option>
+        <option value="Car">Car</option>
+        <option value="Bike">Bike</option>
+      </select>
+    </label>
+
+    <label>
+      Time
+      <input type="time" [(ngModel)]="filterTime" (change)="applyFilter()">
+    </label>
+  </div>
+
+  <label style="margin-bottom: 10px;">
+    Your Employee ID to book a ride
+    <input [(ngModel)]="employeeId" placeholder="Enter Employee ID"/>
+  </label>
+
+  <table *ngIf="filteredRides.length > 0; else noRides">
+    <tr>
+      <th>Employee ID</th>
+      <th>Vehicle</th>
+      <th>Vehicle No</th>
+      <th>Vacant Seats</th>
+      <th>Time</th>
+      <th>Pickup Point</th>
+      <th>Destination</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let ride of filteredRides">
+      <td>{{ ride.ownerEmployeeId }}</td>
+      <td>{{ ride.vehicleType }}</td>
+      <td>{{ ride.vehicleNo }}</td>
+      <td>{{ ride.vacantSeats }}</td>
+      <td>{{ ride.timeISO | date:'shortTime' }}</td>
+      <td>{{ ride.pickupPoint }}</td>
+      <td>{{ ride.destination }}</td>
+      <td>
+        <button [disabled]="ride.vacantSeats === 0" (click)="pickRide(ride)">Book Ride</button>
+      </td>
+    </tr>
+  </table>
+
+  <ng-template #noRides>
+    <div class="error-box">
+      No rides available. Please add a ride first.
+    </div>
+  </ng-template>
+
+  <div *ngIf="message" class="message">{{ message }}</div>
+
+</div>

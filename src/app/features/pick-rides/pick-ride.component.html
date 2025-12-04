@@ -1,0 +1,11 @@
+<div *ngIf="ride; else notfound">
+  <h3>{{ ride.vehicleType }} - {{ ride.vehicleNo }}</h3>
+  <div>Pickup: {{ ride.pickupPoint }} → {{ ride.destination }}</div>
+  <div>Time: {{ ride.timeISO | date:'shortTime' }}</div>
+  <div>Vacant Seats: {{ ride.vacantSeats }}</div>
+
+  <label>Employee ID<input [(ngModel)]="employeeIdForBooking"/></label>
+  <button (click)="book()">Book</button>
+  <div>{{ message }}</div>
+</div>
+<ng-template #notfound>Ride not found</ng-template>

@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+
+body {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+}
+
+
+.navbar {
+  background: #1a73e8;
+  padding: 15px 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.navbar a.active {
+  text-decoration: underline;
+}
+
+
+.page-wrapper {
+  margin-top: 30px;
+  padding: 20px;
+}
